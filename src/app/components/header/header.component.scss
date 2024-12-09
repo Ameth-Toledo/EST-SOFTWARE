@@ -1,0 +1,199 @@
+.header-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    background-color: #161635;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  .brand-logo {
+    width: 40px;
+    cursor: pointer;
+    height: 40px;
+  }
+  
+  .brand-title {
+    color: #EAEAEA;
+    font-size: 24px;
+    font-family: "Ubuntu", sans-serif;
+    margin-left: 10px;
+  }
+  
+  .header-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-item {
+    color: #EAEAEA;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    margin-left: 20px;
+    position: relative;
+  }
+  
+  .menu-item:hover {
+    color: #FFD700;
+  }
+  
+  .menu-item:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #FFD700;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    animation: slideIn 0.5s forwards;
+  }
+  
+  @keyframes slideIn {
+    to {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+  
+  .menu-item-active {
+    font-weight: bold;
+  }
+  
+  .menu-icon {
+    font-size: 18px;
+  }
+  
+  .menu-text {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+  }
+  
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #EAEAEA;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .menu-item-active {
+    font-weight: bold;
+    color: #FFD700;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .header-container {
+      padding: 0 10px;
+    }
+  
+    .header-menu {
+      display: none; 
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      background-color: #2A2A40;
+      z-index: 10;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .header-menu.open {
+      display: flex; 
+    }
+  
+    .menu-item {
+      padding: 10px;
+      text-align: center;
+      margin-left: 0;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    .menu-icon {
+      font-size: 24px;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .header-container {
+      padding: 0 15px;
+    }
+  
+    .header-menu {
+      display: flex;
+    }
+  
+    .menu-item {
+      font-size: 16px;
+      margin-left: 15px;
+    }
+  
+    .menu-toggle {
+      display: none;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .header-container {
+      padding: 0 20px;
+    }
+  
+    .header-menu {
+      display: flex;
+    }
+  
+    .menu-item {
+      font-size: 18px;
+      margin-left: 20px;
+    }
+  
+    .menu-toggle {
+      display: none;
+    }
+  }
+  
+  @media only screen and (min-width: 1200px) {
+    .header-container {
+      max-width: 2000px;
+      padding: 0 30px;
+    }
+  
+    .header-menu {
+      display: flex;
+    }
+  
+    .menu-item {
+      font-size: 18px;
+      margin-left: 20px;
+    }
+  
+    .menu-toggle {
+      display: none;
+    }
+  }
+  
+  
