@@ -1,0 +1,17 @@
+.text-card-disponibilidad {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    color: #333;
+}
+
+.card-disponibilidad {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-disponibilidad img.icono {
+    width: 40px;            
+    height: 40px;           
+    object-fit: contain; 
+}
