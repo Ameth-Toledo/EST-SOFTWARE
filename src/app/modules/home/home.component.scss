@@ -437,6 +437,23 @@
   }
 }
 
+.alert-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
 @media (max-width: 768px) {
     .content {
       max-width: 100%;

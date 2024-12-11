@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './alert.component.scss'
 })
 export class AlertComponent {
+  isModalOpen = false;
+
   @Input() tittle : string = '';
   @Input() mensaje : string = '';
   @Input() icono : string = '';
@@ -24,5 +26,9 @@ export class AlertComponent {
       return 'green';
     } 
     return 'gray';
+  }
+
+  closeModal() {
+    this.isModalOpen = !this.isModalOpen;
   }
 }

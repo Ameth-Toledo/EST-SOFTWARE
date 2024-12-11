@@ -53,17 +53,15 @@
     <h1 class="contacto-form-tittle">Déjanos tu nombre y correo electrónico</h1>
     <h2 class="contacto-msj">Nos pondremos en contacto a través de Gmail.</h2>
     <div class="input-container">
-
       <button class="btn-contacto" (click)="toggleForm()">
         <i class="fa-solid fa-paper-plane"></i> Suscribirse
       </button>
-
       <div *ngIf="formVisible" class="form-fields">
-        <input type="text" placeholder="Ingresa tu nombre aquí" class="campo-contacto">
-        <input type="text" placeholder="Ingresa tu email aquí" class="campo-contacto">
-        <input type="text" placeholder="Ingresa tu número de celular aquí" class="campo-contacto">
-        <textarea placeholder="Ingresa una breve descripción de lo que te gustaría tener en tu software aquí" class="campo-contacto"></textarea>
-        <button class="btn-enviar">
+        <input type="text" [(ngModel)]="nombre" placeholder="Ingresa tu nombre aquí" class="campo-contacto">
+        <input type="text" [(ngModel)]="email" placeholder="Ingresa tu email aquí" class="campo-contacto">
+        <input type="text" [(ngModel)]="celular" placeholder="Ingresa tu número de celular aquí" class="campo-contacto">
+        <textarea [(ngModel)]="descripcion" placeholder="Ingresa una breve descripción aquí" class="campo-contacto"></textarea>
+        <button class="btn-enviar" (click)="submitForm()">
           <i class="fa-solid fa-paper-plane"></i> Enviar
         </button>
       </div>
@@ -103,23 +101,13 @@
 
 <app-footer></app-footer>
 
-<app-alert 
-  tittle="¡Todo está bien!" 
-  mensaje="El proceso se completó con éxito." 
-  icono="fa-solid fa-check-circle" 
-  tipo="success">
-</app-alert>
+<div *ngIf="showAlert" class="alert-container">
+  <app-alert
+    [tittle]="alertType === 'success' ? '¡Todo está bien!' : alertType === 'error' ? '¡Error!' : 'Advertencia'"
+    [mensaje]="alertMessage"
+    [icono]="alertIcon"
+    [tipo]="alertType">
+  </app-alert>
+</div>
 
-<app-alert 
-  tittle="¡Error!" 
-  mensaje="Algo salió mal." 
-  icono="fa-solid fa-times-circle" 
-  tipo="error">
-</app-alert>
 
-<app-alert 
-  tittle="Advertencia" 
-  mensaje="Revisa los datos ingresados." 
-  icono="fa-solid fa-triangle-exclamation" 
-  tipo="warning">
-</app-alert>

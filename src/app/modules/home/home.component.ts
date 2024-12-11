@@ -1,40 +1,96 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
-import { CardDisponibilidadComponent } from "../../components/card-disponibilidad/card-disponibilidad.component";
-import { FooterComponent } from "../../components/footer/footer.component";
-import { AlertComponent } from "../../components/alert/alert.component";
-
-declare const particlesJS: any;
+import { CardDisponibilidadComponent } from '../../components/card-disponibilidad/card-disponibilidad.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { AlertComponent } from '../../components/alert/alert.component';
+import { EmailsService } from '../../services/emails/emails.service';
+import { FormsModule } from '@angular/forms';
+import { Email } from '../../models/email';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, CardDisponibilidadComponent, FooterComponent, AlertComponent],
+  imports: [CommonModule, FormsModule, HeaderComponent, CardDisponibilidadComponent, FooterComponent, AlertComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements AfterViewInit{
-  formVisible : boolean = false;
+export class HomeComponent implements AfterViewInit {
+  formVisible: boolean = false;
+  nombre: string = '';
+  email: string = '';
+  celular: string = '';
+  descripcion: string = '';
+  showAlert: boolean = false;
+  alertMessage: string = '';
+  alertType: string = '';
+  alertIcon: string = '';
 
-  ngAfterViewInit(): void {
-    if (particlesJS) {
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 60 },
-          color: { value: "#ffffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.1 },
-          size: { value: 3 },
-          move: { speed: 1 }
-        }
-      });
-    } else {
-      console.error('particles.js is not loaded!');
-    }
-  }
+  constructor(private emailsService: EmailsService) {}
+
+  ngAfterViewInit(): void {}
 
   toggleForm(): void {
     this.formVisible = !this.formVisible;
+  }
+
+  validateForm(): boolean {
+    if (!this.nombre || !this.email || !this.celular || !this.descripcion) {
+      this.showAlertMessage('Advertencia: Todos los campos son obligatorios.', 'warning', 'fa-solid fa-triangle-exclamation');
+      return false;
+    }
+
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(this.email)) {
+      this.showAlertMessage('Error: Ingresa un correo electrónico válido.', 'error', 'fa-solid fa-times-circle');
+      return false;
+    }
+
+    if (this.celular.length !== 10 || isNaN(Number(this.celular))) {
+      this.showAlertMessage('Error: El número de celular debe tener 10 dígitos numéricos.', 'error', 'fa-solid fa-times-circle');
+      return false;
+    }
+
+    return true;
+  }
+
+  submitForm(): void {
+    if (this.validateForm()) {
+      const formData = new FormData();
+      formData.append('name_email', this.nombre);
+      formData.append('email_user', this.email);
+      formData.append('description', this.descripcion);
+      formData.append('phone_number', this.celular);
+    
+      this.emailsService.createEmail(formData).subscribe({
+        next: () => {
+          this.showAlertMessage('¡Todo está bien! El proceso se completó con éxito.', 'success', 'fa-solid fa-check-circle');
+          this.resetForm();
+        },
+        error: (err) => {
+          const errorDetail = err.error?.detail || 'Algo salió mal. Intenta de nuevo.';
+          this.showAlertMessage(`Error: ${errorDetail}`, 'error', 'fa-solid fa-times-circle');
+        }
+      });
+    }
+  }  
+
+  showAlertMessage(message: string, type: string, icon: string): void {
+    this.alertMessage = message;
+    this.alertType = type;
+    this.alertIcon = icon;
+    this.showAlert = true;
+
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000);
+  }
+
+  resetForm(): void {
+    this.nombre = '';
+    this.email = '';
+    this.celular = '';
+    this.descripcion = '';
+    this.formVisible = false;
   }
 }

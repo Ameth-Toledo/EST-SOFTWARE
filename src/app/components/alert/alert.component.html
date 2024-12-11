@@ -1,8 +1,8 @@
-<div class="alert-modal">
+<div class="alert-modal" *ngIf="isModalOpen">
     <div class="modal-content">
         <h1 class="tittle-modal">{{ tittle }}</h1>
         <p class="mensaje-alert">{{ mensaje }}</p>
         <i class="{{ icono }}" [ngStyle]="{'color': getIconColor()}"></i>
     </div>
-    <button class="btn-confirm">Aceptar</button>
+    <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
 </div>
