@@ -101,13 +101,32 @@
 
 <app-footer></app-footer>
 
-<div *ngIf="showAlert" class="alert-container">
-  <app-alert
-    [tittle]="alertType === 'success' ? '¡Todo está bien!' : alertType === 'error' ? '¡Error!' : 'Advertencia'"
-    [mensaje]="alertMessage"
-    [icono]="alertIcon"
-    [tipo]="alertType">
-  </app-alert>
+<!-- Modal de Éxito -->
+<div class="alert-modal alert-modal-exito" [ngClass]="{'show': showAlert && alertType === 'success'}">
+  <div class="modal-content">
+    <h1 class="tittle-modal">¡Éxito!</h1>
+    <p class="mensaje-alert">{{ alertMessage }}</p>
+    <i class="fa-solid fa-check-circle"></i>
+  </div>
+  <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
 </div>
 
+<!-- Modal de Error -->
+<div class="alert-modal alert-modal-error" [ngClass]="{'show': showAlert && alertType === 'error'}">
+  <div class="modal-content">
+    <h1 class="tittle-modal">¡Error!</h1>
+    <p class="mensaje-alert">{{ alertMessage }}</p>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
+  <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
+</div>
 
+<!-- Modal de Advertencia -->
+<div class="alert-modal alert-modal-warning" [ngClass]="{'show': showAlert && alertType === 'warning'}">
+  <div class="modal-content">
+    <h1 class="tittle-modal">Advertencia</h1>
+    <p class="mensaje-alert">{{ alertMessage }}</p>
+    <i class="fa-solid fa-exclamation-circle"></i>
+  </div>
+  <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
+</div>

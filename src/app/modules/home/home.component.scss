@@ -437,23 +437,6 @@
   }
 }
 
-.alert-container {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  color: white;
-  border-radius: 5px;
-  font-size: 14px;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
-}
-
 @media (max-width: 768px) {
     .content {
       max-width: 100%;
@@ -467,5 +450,101 @@
     .banner-title {
       font-size: 2rem;
     }
+  }
+
+  .alert-modal {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 50px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 90%;
+    max-width: 400px;
+    overflow: hidden;
+    display: none; 
+  }
+
+  .alert-modal.show {
+    display: block; 
+  }
+  
+  .alert-modal::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  .tittle-modal {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .mensaje-alert {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .alert-modal i {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .btn-confirm {
+    background-color: #751FFF;
+    color: #fff;
+    border: none;
+    padding: 10px 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-confirm:hover {
+    background-color: #6200ea;
+  }
+  
+  .alert-modal-success {
+    background-color: #ffffff;
+    border: 2px solid #28a745;
+  }
+  
+  .alert-modal-success i {
+    color: #28a745;
+  }
+  
+  .alert-modal-error {
+    background-color: #ffffff;
+    border: 2px solid #dc3545;
+  }
+  
+  .alert-modal-error i {
+    color: #dc3545;
+  }
+  
+  .alert-modal-warning {
+    background-color: #ffffff;
+    border: 2px solid #ffc107;
+  }
+  
+  .alert-modal-warning i {
+    color: #ffc107;
   }
   

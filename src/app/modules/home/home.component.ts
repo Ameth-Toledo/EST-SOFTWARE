@@ -1,17 +1,15 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
-import { CommonModule } from '@angular/common';
-import { CardDisponibilidadComponent } from '../../components/card-disponibilidad/card-disponibilidad.component';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { AlertComponent } from '../../components/alert/alert.component';
 import { EmailsService } from '../../services/emails/emails.service';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../../components/header/header.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { CardDisponibilidadComponent } from '../../components/card-disponibilidad/card-disponibilidad.component';
 import { FormsModule } from '@angular/forms';
-import { Email } from '../../models/email';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent, CardDisponibilidadComponent, FooterComponent, AlertComponent],
+  imports: [CommonModule, FormsModule, HeaderComponent, CardDisponibilidadComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -23,7 +21,7 @@ export class HomeComponent implements AfterViewInit {
   descripcion: string = '';
   showAlert: boolean = false;
   alertMessage: string = '';
-  alertType: string = '';
+  alertType: string = ''; 
   alertIcon: string = '';
 
   constructor(private emailsService: EmailsService) {}
@@ -80,10 +78,10 @@ export class HomeComponent implements AfterViewInit {
     this.alertType = type;
     this.alertIcon = icon;
     this.showAlert = true;
+  }
 
-    setTimeout(() => {
-      this.showAlert = false;
-    }, 3000);
+  closeModal(): void {
+    this.showAlert = false;
   }
 
   resetForm(): void {
