@@ -48,15 +48,25 @@
   </div>
 </section>
 
-<section class="contacto">
+<section [ngClass]="{'contacto': true, 'open': formVisible}">
   <div class="contacto-form">
-    <h1 class="contacto-form-tittle">Dejanos tu correo electronico</h1>
+    <h1 class="contacto-form-tittle">Déjanos tu nombre y correo electrónico</h1>
     <h2 class="contacto-msj">Nos pondremos en contacto a través de Gmail.</h2>
     <div class="input-container">
-      <input type="text" placeholder="Ingresa tu email aquí" class="campo-contacto">
-      <button class="btn-contacto">
+
+      <button class="btn-contacto" (click)="toggleForm()">
         <i class="fa-solid fa-paper-plane"></i> Suscribirse
       </button>
+
+      <div *ngIf="formVisible" class="form-fields">
+        <input type="text" placeholder="Ingresa tu nombre aquí" class="campo-contacto">
+        <input type="text" placeholder="Ingresa tu email aquí" class="campo-contacto">
+        <input type="text" placeholder="Ingresa tu número de celular aquí" class="campo-contacto">
+        <textarea placeholder="Ingresa una breve descripción de lo que te gustaría tener en tu software aquí" class="campo-contacto"></textarea>
+        <button class="btn-enviar">
+          <i class="fa-solid fa-paper-plane"></i> Enviar
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -82,5 +92,34 @@
   </div>
 </section>
 
-<section class=""></section>
+<section class="promo">
+  <div class="promo-content">
+    <h1 class="promo-tittle">¿Buscas ayuda? Ve a la <br>página de Ayuda</h1>
+    <p class="promo-message">Con gusto te apoyaremos para cualquier duda</p>
+    <button class="btn-ayuda">Ir al Centro de Ayuda</button>
+  </div>
+  <img src="Group 2.png" alt="imagen de ayuda" class="promo-image">
+</section>
 
+<app-footer></app-footer>
+
+<app-alert 
+  tittle="¡Todo está bien!" 
+  mensaje="El proceso se completó con éxito." 
+  icono="fa-solid fa-check-circle" 
+  tipo="success">
+</app-alert>
+
+<app-alert 
+  tittle="¡Error!" 
+  mensaje="Algo salió mal." 
+  icono="fa-solid fa-times-circle" 
+  tipo="error">
+</app-alert>
+
+<app-alert 
+  tittle="Advertencia" 
+  mensaje="Revisa los datos ingresados." 
+  icono="fa-solid fa-triangle-exclamation" 
+  tipo="warning">
+</app-alert>
