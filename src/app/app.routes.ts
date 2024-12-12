@@ -4,6 +4,7 @@ import { ServiciosComponent } from './modules/servicios/servicios.component';
 import { ProgramadoresComponent } from './modules/programadores/programadores.component';
 import { NosotrosComponent } from './modules/nosotros/nosotros.component';
 import { LoginComponent } from './modules/login/login.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { NotfoundComponent } from './modules/notfound/notfound.component';
 
 export const routes: Routes = [
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: "servicios", component: ServiciosComponent },
     { path: "programadores", component: ProgramadoresComponent },
     { path: "login", component: LoginComponent },
+    { path: "dashboard", component: DashboardComponent },
     { path: "**", component: NotfoundComponent}
 ];

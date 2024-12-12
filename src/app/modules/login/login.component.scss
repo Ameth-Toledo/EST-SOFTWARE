@@ -1,92 +1,189 @@
 .login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 40px auto;
-  padding: 20px;
-  max-width: 400px;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 600px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .branding {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .branding-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .branding-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: #007bff;
+  }
+  
+  .develop-title {
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: -30px;
+  }
+  
+  .login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .login-label {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  
+  .login-input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .login-input::placeholder {
+    color: #aaa;
+  }
+  
+  .login-button {
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    margin-bottom: 100px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .login-button:hover {
+    background: linear-gradient(135deg, #0056b3, #0042a1);
+  }
+  
+  .alert-modal {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 50px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 90%;
+    max-width: 400px;
+    overflow: hidden;
+    display: none; 
+  }
 
-.branding {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.branding-logo {
-  width: 120px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.branding-title {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #007bff;
-}
-
-.login-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.login-label {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px 12px;
-}
-
-.input-icon {
-  color: #007bff;
-  font-size: 18px;
-}
-
-.login-input {
-  border: none;
-  outline: none;
-  flex: 1;
-  font-size: 14px;
-  color: #333;
-}
-
-.login-input::placeholder {
-  color: #aaa;
-}
-
-.login-button {
-  font-family: 'Ubuntu', sans-serif;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.login-button:hover {
-  background: linear-gradient(135deg, #0056b3, #0042a1);
-  transform: scale(1.02);
-}
+  .alert-modal.show {
+    display: block; 
+  }
+  
+  .alert-modal::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  .tittle-modal {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .mensaje-alert {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .alert-modal i {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .btn-confirm {
+    background-color: #751FFF;
+    color: #fff;
+    border: none;
+    padding: 10px 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-confirm:hover {
+    background-color: #6200ea;
+  }
+  
+  .alert-modal-success {
+    background-color: #ffffff;
+    border: 2px solid #28a745;
+  }
+  
+  .alert-modal-success i {
+    color: #28a745;
+  }
+  
+  .alert-modal-error {
+    background-color: #ffffff;
+    border: 2px solid #dc3545;
+  }
+  
+  .alert-modal-error i {
+    color: #dc3545;
+  }
+  
+  .alert-modal-warning {
+    background-color: #ffffff;
+    border: 2px solid #ffc107;
+  }
+  
+  .alert-modal-warning i {
+    color: #ffc107;
+  }
+  

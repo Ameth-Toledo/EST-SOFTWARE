@@ -417,6 +417,73 @@
   cursor: pointer;
 }
 
+.comentarios {
+  display: flex;
+  flex-direction: column;  
+  align-items: center; 
+  justify-content: center; 
+  padding: 20px;
+  width: 97%;
+  box-sizing: border-box;
+  margin: 0 auto; 
+  background-color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.comentarios-post {
+  text-align: center; 
+  width: 100%; 
+  max-width: 500px;
+}
+
+.comentarios-tittle {
+  font-family: 'Inter', sans-serif;
+  font-size: 34px;
+  margin-bottom: 20px; 
+}
+
+.campo-comentario-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  width: 100%;
+  height: 50px; 
+  padding: 10px;
+  box-sizing: border-box; 
+  margin-top: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+}
+
+.campo-comentario {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  width: 100%;
+  height: 100px; 
+  padding: 10px;
+  box-sizing: border-box; 
+  margin-top: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  resize: none; 
+}
+
+.btn-comentario {
+  background-color: #000000;
+  color: #FFFFFF;
+  border: none;
+  height: 50px;
+  width: 500px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 10px;
+}
+
 @keyframes slideInLeft {
   0% {
     transform: translateX(-50px);

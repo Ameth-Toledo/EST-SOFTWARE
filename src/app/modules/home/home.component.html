@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="banner-container">
   <div class="content">
-    <h1 class="banner-title">Impulsa tu negocio con<br>EST SOFTWARE</h1>
+    <h1 class="banner-title">Impulsa tu negocio con<br>EST-SOFTWARE</h1>
     <p class="banner-description">Prueba nuestra solución. Contáctanos ahora.</p>
   </div>
   <div class="mockup-group">
@@ -97,6 +97,18 @@
     <button class="btn-ayuda">Ir al Centro de Ayuda</button>
   </div>
   <img src="Group 2.png" alt="imagen de ayuda" class="promo-image">
+</section>
+
+<section class="comentarios">
+  <div class="comentarios-post">
+    <h1 class="comentarios-tittle">Ayúdanos a mejorar</h1>
+
+    <input type="text" [(ngModel)]="name" placeholder="Ingrese su nombre" class="campo-comentario-name">
+    <textarea [(ngModel)]="coment" class="campo-comentario" placeholder="Ingrese su comentario aquí"></textarea>
+    <button class="btn-comentario" (click)="submitComent()">
+      <i class="fa-solid fa-comment"></i>Enviar
+    </button>
+  </div>
 </section>
 
 <app-footer></app-footer>

@@ -5,6 +5,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { CardDisponibilidadComponent } from '../../components/card-disponibilidad/card-disponibilidad.component';
 import { FormsModule } from '@angular/forms';
+import { ComentsService } from '../../services/coments/coments.service';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,11 @@ export class HomeComponent implements AfterViewInit {
   alertType: string = ''; 
   alertIcon: string = '';
 
-  constructor(private emailsService: EmailsService) {}
+  //coments
+  name : string = '';
+  coment : string = '';
+
+  constructor(private emailsService: EmailsService, private comentsService : ComentsService) {}
 
   ngAfterViewInit(): void {}
 
@@ -52,6 +57,14 @@ export class HomeComponent implements AfterViewInit {
     return true;
   }
 
+  validateComent() : boolean {
+    if (!this.name || !this.coment) {
+      this.showAlertMessage('Advertencia: Todos los campos son obligatorios.', 'warning', 'fa-solid fa-triangle-exclamation');
+      return false;
+    }
+    return true;
+  }
+
   submitForm(): void {
     if (this.validateForm()) {
       const formData = new FormData();
@@ -73,6 +86,25 @@ export class HomeComponent implements AfterViewInit {
     }
   }  
 
+  submitComent(): void {
+    if(this.validateComent()) {
+      const formData = new FormData();
+      formData.append('name_user_coment', this.name);
+      formData.append('coment_text', this.coment);
+
+      this.comentsService.createComent(formData).subscribe({
+        next: () => {
+          this.showAlertMessage('¡Todo está bien! El comentario se envio con éxito.', 'success', 'fa-solid fa-check-circle');
+          this.resetComent();
+        },
+        error: (err) => {
+          const errorDetail = err.error?.detail || 'Algo salió mal. Intenta de nuevo.';
+          this.showAlertMessage(`Error: ${errorDetail}`, 'error', 'fa-solid fa-times-circle');
+        }
+      });
+    }
+  }
+
   showAlertMessage(message: string, type: string, icon: string): void {
     this.alertMessage = message;
     this.alertType = type;
@@ -90,5 +122,10 @@ export class HomeComponent implements AfterViewInit {
     this.celular = '';
     this.descripcion = '';
     this.formVisible = false;
+  }
+
+  resetComent(): void {
+    this.name = '';
+    this.coment = '';
   }
 }

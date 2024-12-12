@@ -3,19 +3,19 @@
 <div class="login-container">
   <div class="branding">
     <img
-      src="https://via.placeholder.com/150x100"
+      src="Logo-EST.svg"
       alt="Logo EST-SOFTWARE"
       class="branding-logo"
     />
     <h2 class="branding-title">EST-SOFTWARE</h2>
+    <p class="develop-title">(Develop)</p>
   </div>
 
-  <form class="login-form">
+  <form class="login-form" (submit)="onSubmit($event)">
     <label for="email" class="login-label">
       <i class="fas fa-envelope"></i> Correo Electrónico
     </label>
     <div class="input-wrapper">
-      <i class="fas fa-user input-icon"></i>
       <input
         type="email"
         id="email"
@@ -28,7 +28,6 @@
       <i class="fas fa-lock"></i> Contraseña
     </label>
     <div class="input-wrapper">
-      <i class="fas fa-key input-icon"></i>
       <input
         type="password"
         id="password"
@@ -42,3 +41,34 @@
     </button>
   </form>
 </div>
+
+<!-- Modal de Éxito -->
+<div class="alert-modal alert-modal-exito" [ngClass]="{'show': showAlert && alertType === 'success'}">
+  <div class="modal-content">
+    <h1 class="tittle-modal">¡Éxito!</h1>
+    <p class="mensaje-alert">{{ alertMessage }}</p>
+    <i class="fa-solid fa-check-circle"></i>
+  </div>
+  <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
+</div>
+
+<!-- Modal de Error -->
+<div class="alert-modal alert-modal-error" [ngClass]="{'show': showAlert && alertType === 'error'}">
+  <div class="modal-content">
+    <h1 class="tittle-modal">¡Error!</h1>
+    <p class="mensaje-alert">{{ alertMessage }}</p>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
+  <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
+</div>
+
+<!-- Modal de Advertencia -->
+<div class="alert-modal alert-modal-warning" [ngClass]="{'show': showAlert && alertType === 'warning'}">
+  <div class="modal-content">
+    <h1 class="tittle-modal">Advertencia</h1>
+    <p class="mensaje-alert">{{ alertMessage }}</p>
+    <i class="fa-solid fa-exclamation-circle"></i>
+  </div>
+  <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
+</div>
+
