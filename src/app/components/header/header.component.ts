@@ -33,9 +33,9 @@ export class HeaderComponent {
     this.router.navigate(['/programadores']);
   }
 
-  sendContact(event : Event) {
+  sendLogin(event : Event) {
     event.preventDefault();
-    this.router.navigate(['/contactar']);
+    this.router.navigate(['/login']);
   }
 
   toggleMenu() {
