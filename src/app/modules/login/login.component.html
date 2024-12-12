@@ -1,1 +1,44 @@
 <app-header></app-header>
+
+<div class="login-container">
+  <div class="branding">
+    <img
+      src="https://via.placeholder.com/150x100"
+      alt="Logo EST-SOFTWARE"
+      class="branding-logo"
+    />
+    <h2 class="branding-title">EST-SOFTWARE</h2>
+  </div>
+
+  <form class="login-form">
+    <label for="email" class="login-label">
+      <i class="fas fa-envelope"></i> Correo Electrónico
+    </label>
+    <div class="input-wrapper">
+      <i class="fas fa-user input-icon"></i>
+      <input
+        type="email"
+        id="email"
+        placeholder="Ingresa tu correo"
+        class="login-input"
+      />
+    </div>
+
+    <label for="password" class="login-label">
+      <i class="fas fa-lock"></i> Contraseña
+    </label>
+    <div class="input-wrapper">
+      <i class="fas fa-key input-icon"></i>
+      <input
+        type="password"
+        id="password"
+        placeholder="Ingresa tu contraseña"
+        class="login-input"
+      />
+    </div>
+
+    <button type="submit" class="login-button">
+      <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+    </button>
+  </form>
+</div>
