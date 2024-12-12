@@ -28,6 +28,7 @@ export class LoginComponent {
     const passwordInput = (document.getElementById('password') as HTMLInputElement).value
 
     if (emailInput === this.validEmail && passwordInput === this.validPassword) {
+      localStorage.setItem('isAuthenticated', 'true');
       this.router.navigate(['/dashboard']);
       this.showAlertMessage('Ingreso exitoso', 'success', 'fa-check-circle');
     } else {

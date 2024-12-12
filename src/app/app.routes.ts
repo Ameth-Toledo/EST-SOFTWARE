@@ -6,6 +6,8 @@ import { NosotrosComponent } from './modules/nosotros/nosotros.component';
 import { LoginComponent } from './modules/login/login.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { NotfoundComponent } from './modules/notfound/notfound.component';
+import { ComentariosComponent } from './modules/comentarios/comentarios.component';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
     { path: "", redirectTo: "", pathMatch: "full" },
@@ -14,6 +16,7 @@ export const routes: Routes = [
     { path: "servicios", component: ServiciosComponent },
     { path: "programadores", component: ProgramadoresComponent },
     { path: "login", component: LoginComponent },
-    { path: "dashboard", component: DashboardComponent },
+    { path: "dashboard", component: DashboardComponent, canActivate: [authGuard] },
+    { path: "comentarios", component: ComentariosComponent, canActivate: [authGuard] }, 
     { path: "**", component: NotfoundComponent}
 ];

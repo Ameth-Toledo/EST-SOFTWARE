@@ -1,0 +1,33 @@
+<div class="sidebar">
+    <div class="logo-container">
+      <img src="Logo-EST.svg" alt="logo" class="logo">
+    </div>
+    <ul class="menu">
+      <li class="menu-item">
+        <a  (click)="sendDashboard($event)" routerLinkActive="active" class="menu-link">
+          <i class="fas fa-home"></i> Dashboard
+        </a>
+      </li>
+      <li class="menu-item">
+        <a routerLink="/profile" routerLinkActive="active" class="menu-link">
+          <i class="fas fa-envelope"></i> Correos
+        </a>
+      </li>
+      <li class="menu-item">
+        <a routerLink="/settings" routerLinkActive="active" class="menu-link">
+          <i class="fas fa-check-circle"></i> Correos atendidos
+        </a>
+      </li>
+      <li class="menu-item">
+        <a (click)="sendComents($event)" routerLinkActive="active" class="menu-link">
+          <i class="fas fa-comments"></i> Comentarios
+        </a>
+      </li>
+      <li class="menu-item">
+        <a (click)="logout()" routerLinkActive="active" class="menu-link">
+          <i class="fas fa-sign-out-alt"></i>Cerrar Sesión
+        </a>
+      </li>
+    </ul>
+  </div>
+  
