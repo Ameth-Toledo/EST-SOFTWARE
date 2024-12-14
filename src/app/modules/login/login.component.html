@@ -12,14 +12,14 @@
   </div>
 
   <form class="login-form" (submit)="onSubmit($event)">
-    <label for="email" class="login-label">
-      <i class="fas fa-envelope"></i> Correo Electrónico
+    <label for="emailOrUserName" class="login-label">
+      <i class="fas fa-envelope"></i> Correo Electrónico o Nombre de Usuario
     </label>
     <div class="input-wrapper">
       <input
-        type="email"
-        id="email"
-        placeholder="Ingresa tu correo"
+        type="text"
+        id="emailOrUserName"
+        placeholder="Ingresa tu correo o nombre de usuario"
         class="login-input"
       />
     </div>
@@ -71,4 +71,3 @@
   </div>
   <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
 </div>
-
