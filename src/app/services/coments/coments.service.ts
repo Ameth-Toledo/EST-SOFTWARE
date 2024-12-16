@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Coments } from '../../models/coments';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, throwError, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,9 @@ export class ComentsService {
   constructor(private http : HttpClient) {}
 
   getAllComents(): Observable<Coments[]> {
-    return this.http.get<Coments[]>(this.url).pipe(
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<{ coments: Coments[] }>(this.url, { headers }).pipe(
+      map(response => response.coments),
       catchError(this.handleError)
     );
   }

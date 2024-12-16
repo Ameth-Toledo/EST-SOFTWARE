@@ -25,4 +25,14 @@ export class SidebarComponent {
     event.preventDefault();
     this.router.navigate(['/dashboard'])
   }
+
+  sendEmails(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['/emails']);
+  }
+
+  sendEmailAtendidos(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['/email-atendidos']);
+  }
 }

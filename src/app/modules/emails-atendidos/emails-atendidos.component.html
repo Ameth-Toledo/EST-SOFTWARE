@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="dashboard-container">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <h1>Correos Atendidos</h1>
+    <ng-container *ngIf="attendedEmails.length > 0; else noEmails">
+      <app-card-emails
+        *ngFor="let email of attendedEmails"
+        [email]="email">
+      </app-card-emails>
+    </ng-container>
+    <ng-template #noEmails>
+      <p>No hay correos atendidos.</p>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="dashboard-container">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <h1 class="tittle-emails">Correos Pendientes</h1>
+    <ng-container *ngIf="pendingEmails.length > 0; else noEmails">
+      <div class="cards-container">
+        <app-card-emails
+          *ngFor="let email of pendingEmails"
+          [email]="email"
+          (markAsAttended)="markAsAttended(email)">
+        </app-card-emails>
+      </div>
+    </ng-container>
+    <ng-template #noEmails>
+      <p>No hay correos pendientes.</p>
+    </ng-template>
+  </div>
+</div>

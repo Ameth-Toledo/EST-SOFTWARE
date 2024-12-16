@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Email } from '../../models/email';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, throwError, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,12 @@ export class EmailsService {
   constructor(private http : HttpClient) {}
 
   getAllEmails(): Observable<Email[]> {
-    return this.http.get<Email[]>(this.url).pipe(
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<{ emails: Email[] }>(this.url, { headers }).pipe(
+      map(response => response.emails),
       catchError(this.handleError)
     );
-  }
+  }  
 
   getEmailById(id: number): Observable<Email> {
     return this.http.get<Email>(`${this.url}/${id}`).pipe(

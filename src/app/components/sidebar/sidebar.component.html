@@ -9,12 +9,12 @@
         </a>
       </li>
       <li class="menu-item">
-        <a routerLink="/profile" routerLinkActive="active" class="menu-link">
+        <a (click)="sendEmails($event)" routerLinkActive="active" class="menu-link">
           <i class="fas fa-envelope"></i> Correos
         </a>
       </li>
       <li class="menu-item">
-        <a routerLink="/settings" routerLinkActive="active" class="menu-link">
+        <a (click)="sendEmailAtendidos($event)" routerLinkActive="active" class="menu-link">
           <i class="fas fa-check-circle"></i> Correos atendidos
         </a>
       </li>
