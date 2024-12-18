@@ -24,7 +24,7 @@ export class EmailsAtendidosComponent implements OnInit {
 
   loadAttendedEmails(): void {
     this.emailsService.getAllEmails().subscribe(emails => {
-      this.attendedEmails = emails.filter(email => email.status === 'attended');
+      this.attendedEmails = emails.filter(email => email.status === 'revisado');
     });
   }
 }
