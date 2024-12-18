@@ -1,25 +1,31 @@
-<div class="card-comentarios">
+<div *ngIf="isModalVisible" class="message-notification-modal">
+    <i class="fas fa-check-circle message-icon"></i>
+    <p class="message-tittle">Correo copiado al portapapeles: {{ copiedEmail }}</p>
+  </div>  
+  
+  <div class="card-comentarios">
     <div class="logo-container">
-        <img src="Logo-EST.svg" alt="logo" class="logo">
+      <img src="Logo-EST.svg" alt="logo" class="logo">
     </div>
     <div class="content-container">
-        <h1 class="title-card">EST-SOFTWARE</h1>
-        <h3 class="comentarios-parrafo">Correo de {{ email.name_email }}</h3>
-        <div class="email-container">
-            <span class="email-text">{{ email.email }}</span>
-            <button class="copy-button" (click)="copyToClipboard(email.email)">
-                <i class="fas fa-copy"></i>
-            </button>
-        </div>
-        <p class="comentario">
-            <i class="fas fa-phone"></i>
-            <span>{{ email.phone_number }}</span>
-        </p>
-        <p class="comentario">
-            <i class="fas fa-file-alt"></i>
-            <span>{{ email.description }}</span>
-        </p>
-        <button class="mark-attended-button" (click)="handleMarkAsAttended()">Marcar como atendido</button>
+      <h1 class="title-card">EST-SOFTWARE</h1>
+      <h3 class="comentarios-parrafo">Correo de {{ email.name_email }}</h3>
+      <div class="email-container">
+        <span class="email-text">{{ email.email }}</span>
+        <button class="copy-button" (click)="copyToClipboard(email.email)">
+          <i class="fas fa-copy"></i>
+        </button>
+      </div>
+      <p class="comentario">
+        <i class="fas fa-phone"></i>
+        <span>{{ email.phone_number }}</span>
+      </p>
+      <p class="comentario">
+        <i class="fas fa-file-alt"></i>
+        <span>{{ email.description }}</span>
+      </p>
+      <button class="mark-attended-button" (click)="handleMarkAsAttended()">Marcar como atendido</button>
     </div>
     <i class="fas fa-heart"></i>
-</div>
+  </div>
+  

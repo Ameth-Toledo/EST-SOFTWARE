@@ -1,49 +1,31 @@
 <app-header></app-header>
 
-<div class="login-container">
-  <div class="branding">
-    <img
-      src="Logo-EST.svg"
-      alt="Logo EST-SOFTWARE"
-      class="branding-logo"
-    />
-    <h2 class="branding-title">EST-SOFTWARE</h2>
-    <p class="develop-title">(Develop)</p>
-  </div>
-
-  <form class="login-form" (submit)="onSubmit($event)">
-    <label for="emailOrUserName" class="login-label">
-      <i class="fas fa-envelope"></i> Correo Electrónico o Nombre de Usuario
-    </label>
-    <div class="input-wrapper">
-      <input
-        type="text"
-        id="emailOrUserName"
-        placeholder="Ingresa tu correo o nombre de usuario"
-        class="login-input"
-      />
+<div class="form-container">
+  <form (ngSubmit)="onSubmit($event)" class="form-centered">
+    <div class="title-container">
+      <img src="Logo-EST.svg" alt="Icono de Inicio de Sesión" class="login-icon">
+      <h1 class="login-title">Iniciar Sesión</h1>
     </div>
 
-    <label for="password" class="login-label">
-      <i class="fas fa-lock"></i> Contraseña
-    </label>
-    <div class="input-wrapper">
-      <input
-        type="password"
-        id="password"
-        placeholder="Ingresa tu contraseña"
-        class="login-input"
-      />
+    <div class="input-group">
+      <input type="text" id="emailOrUserName" [(ngModel)]="emailOrUserName" name="emailOrUserName" class="input-group_input" required />
+      <label for="emailOrUserName" class="input-group_label">Correo electrónico o nombre de usuario</label>
     </div>
 
-    <button type="submit" class="login-button">
+    <div class="input-group">
+      <input type="password" id="password" [(ngModel)]="password" name="password" class="input-group_input" required />
+      <label for="password" class="input-group_label">Contraseña</label>
+      <i class="fas fa-eye toggle-password" (click)="togglePassword()" aria-hidden="true"></i>
+    </div>      
+
+    <button type="submit" class="ingresar-btn">
       <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
     </button>
   </form>
 </div>
 
-<!-- Modal de Éxito -->
-<div class="alert-modal alert-modal-exito" [ngClass]="{'show': showAlert && alertType === 'success'}">
+<!-- Modales -->
+<div class="alert-modal alert-modal-success" [ngClass]="{'show': showAlert && alertType === 'success'}">
   <div class="modal-content">
     <h1 class="tittle-modal">¡Éxito!</h1>
     <p class="mensaje-alert">{{ alertMessage }}</p>
@@ -52,7 +34,6 @@
   <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
 </div>
 
-<!-- Modal de Error -->
 <div class="alert-modal alert-modal-error" [ngClass]="{'show': showAlert && alertType === 'error'}">
   <div class="modal-content">
     <h1 class="tittle-modal">¡Error!</h1>
@@ -61,6 +42,7 @@
   </div>
   <button class="btn-confirm" (click)="closeModal()">Aceptar</button>
 </div>
+
 
 <!-- Modal de Advertencia -->
 <div class="alert-modal alert-modal-warning" [ngClass]="{'show': showAlert && alertType === 'warning'}">

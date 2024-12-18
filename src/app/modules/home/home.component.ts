@@ -6,6 +6,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { CardDisponibilidadComponent } from '../../components/card-disponibilidad/card-disponibilidad.component';
 import { FormsModule } from '@angular/forms';
 import { ComentsService } from '../../services/coments/coments.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -25,11 +26,13 @@ export class HomeComponent implements AfterViewInit {
   alertType: string = ''; 
   alertIcon: string = '';
 
-  //coments
   name : string = '';
   coment : string = '';
 
-  constructor(private emailsService: EmailsService, private comentsService : ComentsService) {}
+  constructor(
+    private emailsService: EmailsService, 
+    private comentsService : ComentsService,
+    private router : Router) {}
 
   ngAfterViewInit(): void {}
 
@@ -127,5 +130,10 @@ export class HomeComponent implements AfterViewInit {
   resetComent(): void {
     this.name = '';
     this.coment = '';
+  }
+
+  sendHelp(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['/ayuda']);
   }
 }

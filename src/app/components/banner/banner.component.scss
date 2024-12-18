@@ -1,0 +1,23 @@
+.banner-container {
+    position: relative; 
+    width: 100%;
+    overflow: hidden; 
+}
+
+.banner-heading {
+    position: absolute; 
+    top: 10%; 
+    left: 5%; 
+    color: white; 
+    font-size: 24px; 
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 10px;
+    border-radius: 5px; 
+    max-width: 90%; 
+}
+
+.banner-image {
+    width: 100%;
+    display: block; 
+}

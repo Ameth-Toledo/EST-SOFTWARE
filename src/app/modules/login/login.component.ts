@@ -1,55 +1,43 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [FormsModule, CommonModule, HeaderComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  emailOrUserName: string = '';
+  password: string = '';
   alertMessage: string = '';
   alertType: string = ''; 
-  alertIcon: string = '';
   showAlert: boolean = false;
 
-  readonly validEmail01 = 'estsoftwareoficial@gmail.com';
-  readonly validPassword01 = 'ESTSoftwareDevelop01';
-  readonly userName01 = 'Ameth Toledo'; 
-
-  readonly validEmail02 = 'agustinaconstantino55@gmail.com';
-  readonly validPassword02 = 'ESTSoftwareDevelop02';
-  readonly userName02 = 'Fabricio Perez';
+  readonly validCredentials = [
+    { email: 'estsoftwareoficial@gmail.com', password: 'ESTSoftwareDevelop01', username: 'Ameth Toledo' },
+    { email: 'agustinaconstantino55@gmail.com', password: 'ESTSoftwareDevelop02', username: 'Fabricio Perez' }
+  ];
 
   constructor(private router: Router) {}
 
   onSubmit(event: Event): void {
     event.preventDefault();
 
-    const emailOrUserNameInput = (document.getElementById('emailOrUserName') as HTMLInputElement).value;
-    const passwordInput = (document.getElementById('password') as HTMLInputElement).value;
+    const isEmailValid = this.isValidEmail(this.emailOrUserName);
+    const validUser = this.validCredentials.find(cred => 
+      (isEmailValid && cred.email === this.emailOrUserName && cred.password === this.password) ||
+      (!isEmailValid && cred.username === this.emailOrUserName && cred.password === this.password)
+    );
 
-    if (this.isValidEmail(emailOrUserNameInput)) {
-      if (
-        (emailOrUserNameInput === this.validEmail01 && passwordInput === this.validPassword01) || 
-        (emailOrUserNameInput === this.validEmail02 && passwordInput === this.validPassword02)
-      ) {
-        this.loginSuccess();
-      } else {
-        this.showAlertMessage('Correo o contraseña incorrectos.', 'error', 'fa-triangle-exclamation');
-      }
+    if (validUser) {
+      this.loginSuccess();
     } else {
-      if (
-        (emailOrUserNameInput === this.userName01 && passwordInput === this.validPassword01) || 
-        (emailOrUserNameInput === this.userName02 && passwordInput === this.validPassword02)
-      ) {
-        this.loginSuccess();
-      } else {
-        this.showAlertMessage('Nombre de usuario o contraseña incorrectos.', 'error', 'fa-triangle-exclamation');
-      }
+      this.showAlertMessage('Credenciales incorrectas. Verifica tu correo, usuario o contraseña.', 'error');
     }
   }
 
@@ -61,17 +49,31 @@ export class LoginComponent {
   loginSuccess(): void {
     localStorage.setItem('isAuthenticated', 'true');
     this.router.navigate(['/dashboard']);
-    this.showAlertMessage('Ingreso exitoso', 'success', 'fa-check-circle');
+    this.showAlertMessage('Ingreso exitoso.', 'success');
   }
 
-  showAlertMessage(message: string, type: string, icon: string): void {
+  showAlertMessage(message: string, type: string): void {
     this.alertMessage = message;
     this.alertType = type;
-    this.alertIcon = icon;
     this.showAlert = true;
   }
 
   closeModal(): void {
     this.showAlert = false;
+  }
+
+  togglePassword() {
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    const passwordIcon = document.querySelector('.toggle-password') as HTMLElement;
+
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      passwordIcon.classList.remove('fa-eye');
+      passwordIcon.classList.add('fa-eye-slash');
+    } else {
+      passwordInput.type = 'password';
+      passwordIcon.classList.remove('fa-eye-slash');
+      passwordIcon.classList.add('fa-eye');
+    }
   }
 }

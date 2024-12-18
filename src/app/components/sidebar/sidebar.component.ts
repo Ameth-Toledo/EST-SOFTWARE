@@ -35,4 +35,9 @@ export class SidebarComponent {
     event.preventDefault();
     this.router.navigate(['/email-atendidos']);
   }
+
+  sendAyudas(event: Event): void {
+    event.preventDefault();
+    this.router.navigate(['/ver-ayudas']); 
+  }
 }

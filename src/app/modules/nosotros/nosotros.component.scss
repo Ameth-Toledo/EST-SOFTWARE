@@ -2,3 +2,18 @@
     font-family: 'Ubuntu', sans-serif;
     color: #FFFFFF;
 }
+
+.nosotros-section {
+    display: flex;
+    justify-content: center; 
+    height: 100vh; 
+}
+
+.nosotros-module {
+    background-color: #FFFFFF;
+    height: 200px;
+    width: 97%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}

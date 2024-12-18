@@ -10,11 +10,12 @@ import { ComentariosComponent } from './modules/comentarios/comentarios.componen
 import { EmailsComponent } from './modules/emails/emails.component';
 import { authGuard } from './guard/auth.guard';
 import { EmailsAtendidosComponent } from './modules/emails-atendidos/emails-atendidos.component';
+import { VerAyudasComponent } from './modules/ver-ayudas/ver-ayudas.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "", pathMatch: "full" },
     { path: "", component: HomeComponent },
-    { path: "nosotros", component: NosotrosComponent },
+    { path: "ayuda", component: NosotrosComponent },
     { path: "servicios", component: ServiciosComponent },
     { path: "programadores", component: ProgramadoresComponent },
     { path: "login", component: LoginComponent },
@@ -22,5 +23,6 @@ export const routes: Routes = [
     { path: "comentarios", component: ComentariosComponent, canActivate: [authGuard] }, 
     { path: "emails", component: EmailsComponent, canActivate: [authGuard]},
     { path: "email-atendidos", component: EmailsAtendidosComponent, canActivate: [authGuard]},
+    { path: "ver-ayudas", component: VerAyudasComponent, canActivate: [authGuard]},
     { path: "**", component: NotfoundComponent}
 ];
