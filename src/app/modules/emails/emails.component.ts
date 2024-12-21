@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, SidebarComponent, HeaderComponent, CardEmailsComponent],
   templateUrl: './emails.component.html',
-  styleUrl: './emails.component.scss'
+  styleUrls: ['./emails.component.scss']
 })
 export class EmailsComponent {
   pendingEmails: Email[] = [];
@@ -26,8 +26,8 @@ export class EmailsComponent {
   loadEmails(): void {
     this.emailService.getAllEmails().subscribe(
       (emails: Email[]) => { 
-        this.pendingEmails = emails; 
-        this.loading = false; 
+        this.pendingEmails = emails.filter(email => email.status === 'pendiente');
+        this.loading = false;
       },
       (error: any) => {
         console.error('Error al cargar los emails:', error);
@@ -37,8 +37,8 @@ export class EmailsComponent {
   }  
 
   markAsAttended(email: Email): void {
-    this.emailService.updateStatus(email.id_email, 'attended').subscribe(() => {
+    this.emailService.updateStatus(email.id_email, 'revisado').subscribe(() => {
       this.pendingEmails = this.pendingEmails.filter(e => e.id_email !== email.id_email);
     });
-  }
+  }  
 }

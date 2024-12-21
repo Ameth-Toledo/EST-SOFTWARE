@@ -31,10 +31,8 @@ export class EmailsService {
     );
   }
   
-  updateStatus(id: number, status: string): Observable<Email> {
-    return this.http.put<Email>(`${this.url}/${id}/status`, { status }).pipe(
-      catchError(this.handleError)
-    );
+  updateStatus(emailId: number, status: string): Observable<any> {
+    return this.http.put(`${this.url}/${emailId}/status`, { status });
   }
 
   private handleError(error: any) {
